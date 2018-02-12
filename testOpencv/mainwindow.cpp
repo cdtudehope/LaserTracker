@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    std::string path = "C:/Users/Chris\ Tudehope/Pictures/Camera\ Roll/";
+    std::string path = "TestImages/";
     std::string imageName = "0";
     std::string ext = ".jpg";
     double elapsed_time, start_time;

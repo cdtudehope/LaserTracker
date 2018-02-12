@@ -38,6 +38,8 @@ LIBS += C:\opencv-build\bin\libopencv_imgcodecs331.dll
 LIBS += C:\opencv-build\bin\libopencv_imgproc331.dll
 LIBS += C:\opencv-build\bin\libopencv_features2d331.dll
 LIBS += C:\opencv-build\bin\libopencv_calib3d331.dll
+LIBS += C:\opencv-build\bin\libopencv_video331.dll
+LIBS += C:\opencv-build\bin\libopencv_videoio331.dll
 
 # more correct variant, how set includepath and libs for mingw
 # add system variable: OPENCV_SDK_DIR=D:/opencv/build
