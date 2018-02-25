@@ -31,14 +31,14 @@ void Blob::addToBlob(int x, int y)
 
 //Checks if a point is near a blob
 ///Currently very inefficient code
-bool Blob::isNear(int x, int y)
+bool Blob::isNear(int x, int y, int distanceThreshold)
 {
     double distance;
     bool isNearBlob = false;
     for(int i = 0; i < m_x.size() && i < m_y.size(); i++)
     {
-        distance = sqrt(((m_x[i] - x)*(m_x[i] - x))+((m_y[i] - y)*(m_y[i] - y)));   //Look into somehow getting rid of the square root
-        if(distance < 2)
+        distance = ((m_x[i] - x)*(m_x[i] - x))+((m_y[i] - y)*(m_y[i] - y));
+        if(distance < distanceThreshold*distanceThreshold)
         {
             isNearBlob = true;
             break;
@@ -60,8 +60,10 @@ BlobDetect::BlobDetect()
 }
 
 //fills the blobs vector and returns the number of blobs
-int BlobDetect::detect(cv::Mat img)
+int BlobDetect::detect(cv::Mat img, int distanceThreshold)
 {
+    m_blobs.clear();
+    m_dThres = distanceThreshold;
     for(int y=0; y<img.rows; y++)
     {
         for(int x=0; x<img.cols; x++)
@@ -73,11 +75,6 @@ int BlobDetect::detect(cv::Mat img)
         }
     }
     return(m_blobs.size());
-}
-
-void BlobDetect::clear()
-{
-    m_blobs.clear();
 }
 
 void BlobDetect::add(int x, int y)
@@ -92,7 +89,7 @@ void BlobDetect::add(int x, int y)
         vector<int> nearBlobsIndex;
         for(int i = 0; i < m_blobs.size(); i++)
         {
-            if(m_blobs[i].isNear(x,y))
+            if(m_blobs[i].isNear(x,y,m_dThres))
             {
                 nearBlobsIndex.push_back(i);
             }
