@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,13 +24,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    blobdetect.cpp
+    blobdetect.cpp \
+    widget.cpp \
+    mypartition.cpp \
+    lasertrack.cpp
 
-HEADERS  += mainwindow.h \
-    blobdetect.h
+HEADERS  += blobdetect.h \
+    widget.h \
+    mypartition.h \
+    lasertrack.h
 
-FORMS    += mainwindow.ui
+FORMS    += widget.ui
 
 INCLUDEPATH += C:\opencv\build\include
 
