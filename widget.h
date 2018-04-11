@@ -7,6 +7,8 @@
 #include <QtGui>
 #include "mypartition.h"
 #include "lasertrack.h"
+#include <dshow.h>
+#include <oleauto.h>
 
 namespace Ui {
 class Widget;
@@ -29,7 +31,7 @@ class Widget : public QWidget
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = 0);
+    explicit Widget(LaserTrack* lt, QWidget *parent = 0);
     ~Widget();
 
 private slots:
@@ -46,18 +48,32 @@ private slots:
 
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
+    void on_horizontalSlider_Exposure_valueChanged(int value);
+
+    void on_horizontalSlider_Gain_valueChanged(int value);
+
+    void on_horizontalSlider_Bright_valueChanged(int value);
+
+    void on_horizontalSlider_Contrast_valueChanged(int value);
+
 private:
+    void setupCameraDShow(std::string cameraDiscription);
+    void changeCameraToAuto();
+    void changeCameraSliders();
+    
     Ui::Widget *ui;
-    //codes begin
+
     QCamera *mCamera;
     QCameraViewfinder *mCameraViewfinder;
     QCameraImageCapture *mCameraImageCapture;
-    QVBoxLayout *mLayout2;
-    QVBoxLayout *mLayout;
+    QVBoxLayout *mCameraLayout;
+    QVBoxLayout *mCropOverlayLayout;
     QFrame *mframe;
     MyPartition *mPart;
-    LaserTrack mLaserTrack;
-    //codes end
+    LaserTrack* mLaserTrack;
+
+    //DirectShow var
+    IBaseFilter *mDeviceFilter;
 };
 
 #endif // WIDGET_H

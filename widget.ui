@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1280</width>
     <height>700</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
+    <width>1280</width>
     <height>700</height>
    </size>
   </property>
@@ -40,20 +40,20 @@
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>620</y>
-     <width>621</width>
+     <x>70</x>
+     <y>570</y>
+     <width>601</width>
      <height>22</height>
     </rect>
    </property>
   </widget>
-  <widget class="QFrame" name="frame_2">
+  <widget class="QFrame" name="cameraFrame">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>50</y>
-     <width>631</width>
-     <height>474</height>
+     <x>69</x>
+     <y>40</y>
+     <width>652</width>
+     <height>493</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -63,7 +63,7 @@
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="cropOverlayFrame">
    <property name="geometry">
     <rect>
      <x>69</x>
@@ -82,9 +82,9 @@
   <widget class="QSlider" name="horizontalSlider">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>550</y>
-     <width>271</width>
+     <x>750</x>
+     <y>110</y>
+     <width>231</width>
      <height>22</height>
     </rect>
    </property>
@@ -98,9 +98,9 @@
   <widget class="QSlider" name="horizontalSlider_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>590</y>
-     <width>271</width>
+     <x>750</x>
+     <y>180</y>
+     <width>231</width>
      <height>22</height>
     </rect>
    </property>
@@ -114,9 +114,9 @@
   <widget class="QSlider" name="horizontalSlider_3">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>550</y>
-     <width>271</width>
+     <x>1010</x>
+     <y>110</y>
+     <width>241</width>
      <height>22</height>
     </rect>
    </property>
@@ -130,9 +130,9 @@
   <widget class="QSlider" name="horizontalSlider_4">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>590</y>
-     <width>271</width>
+     <x>1010</x>
+     <y>180</y>
+     <width>241</width>
      <height>22</height>
     </rect>
    </property>
@@ -147,13 +147,179 @@
    <property name="geometry">
     <rect>
      <x>70</x>
-     <y>660</y>
+     <y>640</y>
      <width>601</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Start Tracking</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>50</y>
+     <width>381</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Crop Image</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>220</y>
+     <width>351</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Camera Settings</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>80</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Width</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>150</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Height</string>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_Exposure">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>290</y>
+     <width>361</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_Contrast">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>500</y>
+     <width>361</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_Gain">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>360</y>
+     <width>361</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_Bright">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>430</y>
+     <width>361</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>260</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exposure</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>320</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gain</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>390</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Brightness</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>470</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Contrast</string>
    </property>
   </widget>
  </widget>

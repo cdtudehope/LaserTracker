@@ -13,7 +13,7 @@ void MyPartition::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
     rec.setRect(mX,mY,mWidth,mHeight);
-    QPen pen(Qt::red);
+    QPen pen(Qt::blue);
     pen.setWidth(3);
     painter.setPen(pen);
     painter.drawRect(rec);

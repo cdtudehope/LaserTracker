@@ -47,19 +47,12 @@ LIBS += C:\opencv-build\bin\libopencv_calib3d331.dll
 LIBS += C:\opencv-build\bin\libopencv_video331.dll
 LIBS += C:\opencv-build\bin\libopencv_videoio331.dll
 
-# more correct variant, how set includepath and libs for mingw
-# add system variable: OPENCV_SDK_DIR=D:/opencv/build
-# read http://doc.qt.io/qt-5/qmake-variable-reference.html#libs
-
-#INCLUDEPATH += $$(OPENCV_SDK_DIR)/include
-
-#LIBS += -L$$(OPENCV_SDK_DIR)/x86/mingw/lib \
-#        -lopencv_core331        \
-#        -lopencv_highgui331     \
-#        -lopencv_imgcodecs331   \
-#        -lopencv_imgproc331     \
-#        -lopencv_features2d331  \
-#        -lopencv_calib3d331
-
 DISTFILES += \
     ../../Pictures/Camera Roll/WIN_20180111_15_53_13_Pro.jpg
+
+win32: LIBS +=  -lole32 \
+               -lOleAut32
+
+win32: LIBS += -lquartz
+
+win32: LIBS += -lstrmiids

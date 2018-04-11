@@ -6,7 +6,8 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Widget w;
+    LaserTrack laserTracker;
+    Widget w(&laserTracker);
     w.show();
 
     return a.exec();
