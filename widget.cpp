@@ -61,8 +61,6 @@ Widget::~Widget()
 
     //Need to change camera back to auto
     changeCameraToAuto();
-    delete mDeviceFilter;
-    mDeviceFilter = NULL;
 }
 
 void Widget::on_horizontalSlider_valueChanged(int value)
@@ -98,12 +96,17 @@ void Widget::on_pushButton_released()
         }
     }
     delete mCamera;
+    this->hide();
     mLaserTrack->track();
+    this->close();
 }
 
 
 void Widget::on_comboBox_currentIndexChanged(const QString &arg1)
 {
+    //Reset camera settings back to default before closing it.
+    changeCameraToAuto();
+
     //Clear old camera and layout pointers
     if(mCamera != NULL)
     {
@@ -216,7 +219,7 @@ void Widget::changeCameraToAuto()
         }
         else
         {
-            long Min, Max, Step, Default, Flags, Val;
+            long Min, Max, Step, Default, Flags;
             // Get the range and default values
             hr = cameraControl->GetRange(CameraControl_Exposure, &Min, &Max, &Step, &Default, &Flags);
             if (SUCCEEDED(hr))
@@ -246,7 +249,7 @@ void Widget::changeCameraToAuto()
         }
         else
         {
-            long Min, Max, Step, Default, Flags, Val;
+            long Min, Max, Step, Default, Flags;
             // Get the range and default values
             hr = procAmp->GetRange(VideoProcAmp_Brightness, &Min, &Max, &Step, &Default, &Flags);
             if (SUCCEEDED(hr))
