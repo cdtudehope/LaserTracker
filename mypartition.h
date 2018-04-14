@@ -7,27 +7,33 @@
 class MyPartition : public QWidget
 {
 public:
-    MyPartition();
+    MyPartition(int width, int height);
     void paintEvent(QPaintEvent *event);
-    void decBox();
-    int getX();
-    void setX(int x);
-    int getY();
-    void setY(int y);
+
+    //Using these setters will change the shape of the rectangle drawn
+    int getXLeft();
+    void setXLeft(int x);
+    int getYTop();
+    void setYTop(int y);
+    int getXRight();
+    void setXRight(int x);
+    int getYBottom();
+    void setYBottom(int y);
+
+    //Width is calculated by right - left and bottom - top
     int getWidth();
-    void setWidth(int w);
     int getHeight();
-    void setHeight(int h);
+    //Wdith set by constructor
     int getMaxWidth();
     int getMaxHeight();
 private:
-    QRect rec;
-    int mX;
-    int mY;
-    int mWidth;
-    int mHeight;
+    QRect mRec;
+    int mXLeft;
+    int mYTop;
+    int mXRight;
+    int mYBottom;
     int maxWidth;
-    int maxHeight;
+    int maxheight;
 };
 
 #endif // MYPARTITION_H

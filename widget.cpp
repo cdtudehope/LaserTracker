@@ -35,7 +35,7 @@ Widget::Widget(LaserTrack *lt, QWidget *parent) :
     ui->cameraFrame->setLayout(mCameraLayout);
 
     //Setup an overlay that will draw over the camera image for croping
-    mPart = new MyPartition();
+    mPart = new MyPartition(ui->cameraFrame->width(), ui->cameraFrame->height());
     mCropOverlayLayout = new QVBoxLayout;
     mCropOverlayLayout->addWidget(mPart);
     ui->cropOverlayFrame->setLayout(mCropOverlayLayout);
@@ -65,27 +65,27 @@ Widget::~Widget()
 
 void Widget::on_horizontalSlider_valueChanged(int value)
 {
-    mPart->setX(value *(630.0/200));    ///Need to change to something other then hard code for 630.0
+    mPart->setXLeft(value *(double(ui->cameraFrame->width())/ui->horizontalSlider->maximum()));
 }
 
 void Widget::on_horizontalSlider_2_valueChanged(int value)
 {
-    mPart->setY(value *(473.0/200));
+    mPart->setYTop(value *(double(ui->cameraFrame->height())/ui->horizontalSlider_2->maximum()));
 }
 
 void Widget::on_horizontalSlider_3_valueChanged(int value)
 {
-    mPart->setWidth(value*(630.0/200));
+    mPart->setXRight(value*(double(ui->cameraFrame->width())/ui->horizontalSlider_3->maximum()));
 }
 
 void Widget::on_horizontalSlider_4_valueChanged(int value)
 {
-    mPart->setHeight(value*(473.0/200));
+    mPart->setYBottom(value*(double(ui->cameraFrame->height())/ui->horizontalSlider_4->maximum()));
 }
 
 void Widget::on_pushButton_released()
 {
-    mLaserTrack->setCrop(mPart->getX(), mPart->getY(), mPart->getWidth(), mPart->getHeight(), mPart->getMaxWidth(), mPart->getMaxHeight());
+    mLaserTrack->setCrop(mPart->getXLeft(), mPart->getYTop(), mPart->getWidth(), mPart->getHeight(), mPart->getMaxWidth(), mPart->getMaxHeight());
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
     for(int i = 0; i < cameras.size(); i++)
     {

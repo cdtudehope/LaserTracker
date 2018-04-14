@@ -67,9 +67,9 @@
    <property name="geometry">
     <rect>
      <x>69</x>
-     <y>39</y>
-     <width>661</width>
-     <height>501</height>
+     <y>40</y>
+     <width>652</width>
+     <height>493</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -337,7 +337,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Adjust camera settings so that screen is darked and laser pops.</string>
+    <string>Adjust camera settings so that screen is darkened and laser pops.</string>
    </property>
   </widget>
  </widget>

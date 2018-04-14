@@ -1,72 +1,69 @@
 #include "mypartition.h"
 #include "iostream"
 
-MyPartition::MyPartition()
-{
-    mWidth = maxWidth = 630;
-    mHeight = maxHeight = 473;
-    mX=1;
-    mY=1;
-}
+MyPartition::MyPartition(int width, int height):
+    maxWidth(width), maxheight(height),
+    mXLeft(0), mYTop(0), mXRight(width), mYBottom(height)
+{}
 
 void MyPartition::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    rec.setRect(mX,mY,mWidth,mHeight);
+    mRec.setRect(mXLeft,mYTop,getWidth()-21,getHeight()-20);    //The subtractions is there because it was acting weird
     QPen pen(Qt::blue);
     pen.setWidth(3);
     painter.setPen(pen);
-    painter.drawRect(rec);
+    painter.drawRect(mRec);
 }
 
-void MyPartition::decBox()
+int MyPartition::getXLeft()
 {
-    mX = rec.x() + 10;
-    mY = rec.y() + 10;
-    mWidth = rec.width() - 20;
-    mHeight = rec.height() - 20;
+    return(mXLeft);
 }
 
-int MyPartition::getX()
+void MyPartition::setXLeft(int x)
 {
-    return(mX);
+    mXLeft = x;
 }
 
-void MyPartition::setX(int x)
+int MyPartition::getYTop()
 {
-    mWidth += (mX - x);
-    mX = x;
+    return(mYTop);
 }
 
-int MyPartition::getY()
+void MyPartition::setYTop(int y)
 {
-    return(mY);
+    mYTop = y;
 }
 
-void MyPartition::setY(int y)
+int MyPartition::getXRight()
 {
-    mHeight += (mY - y);
-    mY = y;
+    return(mXRight);
+}
+
+void MyPartition::setXRight(int x)
+{
+    mXRight = x;
+}
+
+int MyPartition::getYBottom()
+{
+    return(mYBottom);
+}
+
+void MyPartition::setYBottom(int y)
+{
+    mYBottom = y;
 }
 
 int MyPartition::getWidth()
 {
-    return(mWidth);
-}
-
-void MyPartition::setWidth(int w)
-{
-    mWidth = w;
+    return(mXRight-mXLeft);
 }
 
 int MyPartition::getHeight()
 {
-    return(mHeight);
-}
-
-void MyPartition::setHeight(int h)
-{
-    mHeight = h;
+    return(mYBottom-mYTop);
 }
 
 int MyPartition::getMaxWidth()
@@ -76,6 +73,6 @@ int MyPartition::getMaxWidth()
 
 int MyPartition::getMaxHeight()
 {
-    return(maxHeight);
+    return(maxheight);
 }
 
